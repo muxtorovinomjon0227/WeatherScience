@@ -1,0 +1,146 @@
+name: weather_science
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  # for key-value database
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # for navigation
+  auto_route: ^8.0.3
+
+  # for dependency injection
+  get_it: ^7.6.7
+
+  # for get_it
+  injectable: ^2.3.2
+
+  # for native Android & iOS splash screen
+  flutter_native_splash: ^2.3.2
+
+  # for keeping all text in one place and future localization
+  easy_localization: ^3.0.5
+
+  # for JSON serialization and deserialization
+  json_annotation: ^4.8.1
+
+  # for responsive ui
+  flutter_screenutil: ^5.9.0
+
+  # Code generation for immutable classes that has a simple
+  # syntax/API without compromising on the features.
+  freezed: ^2.4.2
+
+  freezed_annotation: ^2.4.1
+
+  # for state management (Business Logic Component)
+  flutter_bloc: ^8.1.4
+
+
+  # for comparing Objects
+  equatable: ^2.0.5
+
+  # for connect to the Firebase project
+  firebase_core: ^2.29.0
+
+  # for catch errors in Firebase console
+  firebase_crashlytics: ^3.5.1
+
+  # for HTTP networking
+  dio: ^5.4.1
+
+  # for SVG icons
+  flutter_svg: ^2.0.9
+
+  # for see log nice color
+  logger: ^2.0.2+1
+
+  # Internet connections checking
+  connectivity_plus: ^6.0.1
+
+  # for dart tz
+  dartz: ^0.10.1
+
+  # for secret api key
+  flutter_dotenv: ^5.1.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1
+
+  # for auto_route lib generator
+  auto_route_generator: ^8.0.0
+
+  # for hive lib generator
+  hive_generator: ^2.0.1
+
+  # Automatically generate code for converting to and from JSON by annotating Dart classes.
+  json_serializable: ^6.7.1
+
+  # for injectable file gen
+  injectable_generator: ^2.4.0
+
+  # for file generate
+  build_runner:
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/fonts/
+    - assets/translations/
+    - .env
+
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope/Manrope-Regular.ttf
+        - asset: assets/fonts/Manrope/Manrope-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Manrope/Manrope-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Manrope/Manrope-ExtraBold.ttf
+          weight: 800
+
+
+# for flutter_native_splash lib, generate command - dart run flutter_native_splash:create
+flutter_native_splash:
+
+  color: "#2255EC"
+  image: assets/images/app_logo.png
+  color_dark: "#2255EC"
+
+  android_12:
+    image: assets/images/app_logo.png
+
+    # Splash screen background color.
+    color: "#2255EC"
+
+    # App icon background color.
+    icon_background_color: "#2255EC"
+
+fullscreen: true
+
+# for flutter_launcher_icons lib, generate command - flutter pub run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/logo.png"
+  min_sdk_android: 21
+

@@ -1,0 +1,4 @@
+{
+  "apiUrl": "https://api.openweathermap.org",
+  "env": "PROD"
+}

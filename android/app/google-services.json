@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "503782845658",
+    "project_id": "weatherscience-ac064",
+    "storage_bucket": "weatherscience-ac064.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503782845658:android:cef73954a7549e6f4649e3",
+        "android_client_info": {
+          "package_name": "uz.inomjonflutterdev.weather_science"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKBX4lEQ3DCTmLJzBNKpFXKsXIEjSudaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

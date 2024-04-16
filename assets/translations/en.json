@@ -1,0 +1,23 @@
+{
+  "keyword": {
+    "oopsTitle": "Oops something went wrong",
+    "oops": "Oops!",
+    "ok": "OK"
+  },
+
+  "authView": {
+    "welcome" : "Login to Your Account",
+    "inputEmail" : "Enter Your Email",
+    "inputPassword" : "Enter Your Password",
+    "authWith" : "Or Login With",
+    "notAccount" : "Don't have an account?",
+    "signUp" : "Sign Up"
+  },
+
+  "rootView": {
+    "tabBarText": "Weather",
+    "home": "Home",
+    "calendar": "Calendar",
+    "search": "Search"
+  }
+}
