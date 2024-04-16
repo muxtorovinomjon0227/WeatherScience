@@ -19,5 +19,11 @@
     "home": "Home",
     "calendar": "Calendar",
     "search": "Search"
+  },
+  "drawer": {
+    "logOut": "Logout",
+    "cancel": "Cancel",
+    "attention": "Attention!",
+    "logOutMessage": "Are you sure you want to exit the application?"
   }
 }

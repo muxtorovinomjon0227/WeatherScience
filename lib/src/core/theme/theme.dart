@@ -22,16 +22,16 @@ class AppThemes {
   static const int _textColor = 0xFF000000;
   static const MaterialColor textSwatch =
   MaterialColor(_textColor, <int, Color>{
-    50: Color(0xFFFFFFFF),
-    100: Color(0xFFFFFFFF),
+    50: Color(0xFFc9f5fe),
+    100: Color(0xFFc9f5fe),
     200: AppColors.appBakColor,
-    300: Color(0xFFFFFFFF),
-    400: Color(0xFFFFFFFF),
+    300: Color(0xFFc9f5fe),
+    400: Color(0xFFc9f5fe),
     500: Color(_textColor),
-    600: Color(0xFFFFFFFF),
-    700: Color(0xFFFFFFFF),
-    800: Color(0xFFFFFFFF),
-    900: Color(0xFFFFFFFF),
+    600: Color(0xFFc9f5fe),
+    700: Color(0xFFc9f5fe),
+    800: Color(0xFFc9f5fe),
+    900: Color(0xFFc9f5fe),
   });
 
   static final blueTheme = ThemeData(
@@ -39,10 +39,11 @@ class AppThemes {
     dividerTheme: const DividerThemeData(color: AppColors.textColor),
     scaffoldBackgroundColor: AppColors.appBakColor,
     cardColor: AppColors.cardColor,
+    dialogTheme: const DialogTheme(backgroundColor: AppColors.appBakColor,elevation: 6),
     bottomSheetTheme: const BottomSheetThemeData(backgroundColor: AppColors.cardColor),
     buttonTheme: const ButtonThemeData(buttonColor: AppColors.buttonColor),
     iconTheme: IconThemeData(color: AppColors.textColor,size: 24.sp),
-    appBarTheme: AppBarTheme(backgroundColor: AppColors.appBakColor,iconTheme: IconThemeData(color: AppColors.textColor,size: 26.sp),),
+    appBarTheme: AppBarTheme(backgroundColor: AppColors.navBarColor,iconTheme: IconThemeData(color: AppColors.textColor,size: 26.sp),),
     dividerColor: AppColors.textColor,
     fontFamily: AppFonts.manrope,
     textTheme: TextTheme(
@@ -54,18 +55,19 @@ class AppThemes {
       ),
     ),
     colorScheme: ColorScheme.fromSwatch(primarySwatch: primarySwatch).copyWith(surface: textSwatch.shade100),
-    bottomAppBarTheme: const BottomAppBarTheme(color: AppColors.appBakColor),
+    bottomAppBarTheme: const BottomAppBarTheme(color: AppColors.navBarColor),
   );
 
   static final greenTheme = blueTheme.copyWith(
     brightness: Brightness.light,
+    dialogTheme: const DialogTheme(backgroundColor: AppColors.appBakColor,elevation: 6),
     dividerTheme: const DividerThemeData(color: AppColors.textColor),
     scaffoldBackgroundColor: AppColors.appBakColor,
     cardColor: AppColors.cardColor,
     bottomSheetTheme: const BottomSheetThemeData(backgroundColor: AppColors.cardColor),
     buttonTheme: const ButtonThemeData(buttonColor: AppColors.buttonColor),
     iconTheme: IconThemeData(color: AppColors.textColor, size: 24.sp),
-    appBarTheme: AppBarTheme(backgroundColor: AppColors.appBakColor,iconTheme: IconThemeData(color: AppColors.textColor,size: 26.sp),),
+    appBarTheme: AppBarTheme(backgroundColor: AppColors.navBarColor,iconTheme: IconThemeData(color: AppColors.textColor,size: 26.sp),),
     dividerColor: AppColors.textColor,
     textTheme: TextTheme(
       displayMedium: TextStyle(
@@ -76,6 +78,6 @@ class AppThemes {
       ),
     ),
     colorScheme: ColorScheme.fromSwatch(primarySwatch: primarySwatch).copyWith(surface: textSwatch.shade100),
-    bottomAppBarTheme: const BottomAppBarTheme(color: AppColors.appBakColor),
+    bottomAppBarTheme: const BottomAppBarTheme(color: AppColors.navBarColor),
   );
 }

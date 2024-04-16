@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather_science/src/core/extensions/widget_ext.dart';
+import 'package:weather_science/src/features/root/presentation/views/root_appbar.dart';
 import '../../../../core/consts/colors/app_colors.dart';
 import '../../../../core/consts/icons/app_icons.dart';
 import '../../../../core/router/router.gr.dart';
+import '../../../draver/presentation/views/drawer_view.dart';
 
 @RoutePage()
 class RootView extends StatefulWidget {
@@ -15,11 +17,7 @@ class RootView extends StatefulWidget {
 }
 
 class _RootViewState extends State<RootView> {
-  List<String> titles = [
-    'rootView.home'.tr(),
-    'rootView.calendar'.tr(),
-    'rootView.search'.tr(),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
@@ -31,45 +29,55 @@ class _RootViewState extends State<RootView> {
       transitionBuilder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: AppColors.white,
-            centerTitle: true,
-            leading: const SizedBox.shrink(),
-            title: Text(
-              titles.elementAt(tabsRouter.activeIndex),
-              style: const TextStyle(
-                fontSize: 15,
-                height: 20/15,
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
+          drawer: Drawer(
+              width: 300.sp,
+              backgroundColor: AppColors.navBarColor,
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              child: DrawerView()),
+
+          appBar: rootAppBar(context),
           body: FadeTransition(
             opacity: animation,
             child: child,
           ),
           bottomNavigationBar: NavigationBar(
-            backgroundColor: AppColors.white,
             indicatorColor: Colors.transparent,
-            height: 83.h,
+             backgroundColor: AppColors.navBarColor,
+            height: 64.h,
             destinations: [
               NavigationDestination(
-                icon: Image.asset(AppIcons.homeThin),
-                selectedIcon: Image.asset(AppIcons.homeFill),
-                label: 'rootView.home'.tr(),
-              ),
+                icon: SizedBox(
+                    width: 24.sp,
+                    height: 24.sp,
+                    child: Image.asset(AppIcons.homeThin)),
+                selectedIcon: SizedBox(
+                    width: 24.sp,
+                    height: 24.sp,
+                    child: Image.asset(AppIcons.homeFill)),
+                label: '',
+              ).paddingOnly(t: 12.sp),
               NavigationDestination(
-                icon: Image.asset(AppIcons.calendarThin),
-                selectedIcon: Image.asset(AppIcons.calendarFill),
-                label: 'rootView.calendar'.tr(),
-              ),
+                icon: SizedBox(
+                    width: 24.sp,
+                    height: 24.sp,
+                    child: Image.asset(AppIcons.calendarThin)),
+                selectedIcon: SizedBox(
+                    width: 24.sp,
+                    height: 24.sp,
+                    child: Image.asset(AppIcons.calendarFill)),
+                label: ''
+              ).paddingOnly(t: 12.sp),
               NavigationDestination(
-                icon: Image.asset(AppIcons.searchThin),
-                selectedIcon: Image.asset(AppIcons.searchFill),
-                label: 'rootView.search'.tr(),
-              ),
+                icon: SizedBox(
+                    width: 24.sp,
+                    height: 24.sp,
+                    child: Image.asset(AppIcons.searchThin,color: AppColors.buttonColor)),
+                selectedIcon: SizedBox(
+                    width: 24.sp,
+                    height: 24.sp,
+                    child: Image.asset(AppIcons.searchFill,color: AppColors.buttonColor)),
+                label: ''
+              ).paddingOnly(t: 12.sp),
             ],
             selectedIndex: tabsRouter.activeIndex,
             onDestinationSelected: (tabIndex) => {

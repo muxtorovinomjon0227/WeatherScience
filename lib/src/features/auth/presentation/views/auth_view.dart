@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather_science/src/core/utils/dialogs.dart';
 import 'package:weather_science/src/core/widgets/common_text.dart';
 import '../../../../core/di/di.dart';
 import '../bloc/auth_bloc.dart';
@@ -63,7 +64,7 @@ class _AuthViewState extends State<AuthView> {
                 SizedBox(height: 24.h),
                 CommText(text: 'authView.authWith'.tr()),
                 SizedBox(height: 16.h),
-                GoogleButton(onRegister: _onRegister),
+                GoogleButton(onRegister: _onLoginWithGoogle),
                 SizedBox(height: 16.h),
                 Register(onPressed: () {  },),
               ],
@@ -76,25 +77,12 @@ class _AuthViewState extends State<AuthView> {
 
   Future<void> _onLogin() async {
     if (_formKey.currentState!.validate()) {
-      di<AuthBloc>().add(
-        LoginEvent(
-          login: _loginController.text,
-          password: _passwordController.text,
-          context: context,
-        ),
-      );
+      di<AuthBloc>().add(LoginWithGoogleEvent(context: context));
     }
   }
 
-  Future<void> _onRegister() async {
-    if (_formKey.currentState!.validate()) {
-      di<AuthBloc>().add(
-        LoginEvent(
-          login: _loginController.text,
-          password: _passwordController.text,
-          context: context,
-        ),
-      );
-    }
+  Future<void> _onLoginWithGoogle() async {
+    DialogUtils.showLoading(context);
+    di<AuthBloc>().add(LoginWithGoogleEvent(context: context));
   }
 }

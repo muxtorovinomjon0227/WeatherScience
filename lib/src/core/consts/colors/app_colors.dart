@@ -10,7 +10,5 @@ import 'package:flutter/cupertino.dart';
   static const Color textColor =  Color(0xFFc9f5fe);
   static const Color cardColor =  Color(0xFF102d57);
   static const Color transparent =  Color(0x00000000);
-
-
-
+  static const Color navBarColor =  Color(0xFF152E51);
 }

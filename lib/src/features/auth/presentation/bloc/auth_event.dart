@@ -6,14 +6,8 @@ abstract class AuthEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class LoginEvent extends AuthEvent {
-  const LoginEvent({
-    required this.login,
-    required this.password,
-    required this.context,
-  });
-  final String login;
-  final String password;
+class LoginWithGoogleEvent extends AuthEvent {
+  const LoginWithGoogleEvent({required this.context,});
   final BuildContext context;
 }
 

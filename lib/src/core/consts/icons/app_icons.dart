@@ -10,5 +10,7 @@ class AppIcons {
    static const String searchFill = 'assets/icons/search_fill.png';
    static const String google = 'assets/icons/google.png';
    static const String password = 'assets/icons/password.png';
+   static const String avatar = 'assets/icons/avatar.png';
+   static const String logout = 'assets/icons/logout.png';
 }
 
