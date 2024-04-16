@@ -22,7 +22,7 @@ class AuthView extends StatefulWidget {
 
 class _AuthViewState extends State<AuthView> {
   final _formKey = GlobalKey<FormState>();
-  final _loginController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   final FocusNode _loginFocusNode = FocusNode();
@@ -30,7 +30,7 @@ class _AuthViewState extends State<AuthView> {
 
   @override
   void dispose() {
-    _loginController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     _loginFocusNode.unfocus();
     _passwordFocusNode.unfocus();
@@ -55,7 +55,7 @@ class _AuthViewState extends State<AuthView> {
                 const Welcome(),
                 SizedBox(height: 60.h),
                 InputsArea(
-                  loginController: _loginController,
+                  loginController: _emailController,
                   passwordController: _passwordController,
                   loginFocusNode: _loginFocusNode,
                   passwordFocusNode: _passwordFocusNode),
@@ -77,7 +77,7 @@ class _AuthViewState extends State<AuthView> {
 
   Future<void> _onLogin() async {
     if (_formKey.currentState!.validate()) {
-      di<AuthBloc>().add(LoginWithGoogleEvent(context: context));
+      di<AuthBloc>().add(LoginEmailPassEvent(context: context, email: _emailController.text, pass: _passwordController.text));
     }
   }
 

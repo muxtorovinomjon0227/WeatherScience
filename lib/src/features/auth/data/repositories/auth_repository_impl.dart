@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:weather_science/main.dart';
 import 'package:weather_science/src/core/utils/app_utils.dart';
 import '../../../../core/http/error_handler.dart';
 import '../../../../core/http/failure.dart';
@@ -33,11 +34,36 @@ class AuthRepositoryImpl extends AuthRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, dynamic>> signInEmailPassword({required BuildContext context}) async {
-    if (await InternetService.isConnection()) {
 
+  @override
+  Future<Either<Failure, dynamic>> signUpEmailPassword({required BuildContext context, required String email, required String password}) async {
+    if (await InternetService.isConnection()) {
       try {
+        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        logger.i(credential);
+        return Right("sdf");
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    } else {
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, dynamic>> signInEmailPassword({required BuildContext context,required String email,required String password}) async {
+    if (await InternetService.isConnection()) {
+      try {
+
+        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        logger.i(credential);
+
         return Right("sdf");
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);

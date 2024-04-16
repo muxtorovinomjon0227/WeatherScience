@@ -17,8 +17,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginWithGoogleEvent>((event, emit) async {
       await _loginWithGoogle(event, emit);
     });
-    on<LogOutEvent>((event, emit) async {
-      await _logOut(event, emit);
+    on<LoginEmailPassEvent>((event, emit) async {
+      await _logInEmailPass(event, emit);
     });
   }
 
@@ -33,5 +33,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                   LoginState(user: r);}));
   }
 
-  Future<void> _logOut(LogOutEvent event, Emitter<AuthState> emit) async {}
+  Future<void> _logInEmailPass(LoginEmailPassEvent event, Emitter<AuthState> emit) async {
+    _authRepositoryImpl.signInEmailPassword(context: event.context, email: event.email, password: event.pass);
+  }
 }
