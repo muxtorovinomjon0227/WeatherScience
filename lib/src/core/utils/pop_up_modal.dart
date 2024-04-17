@@ -98,13 +98,13 @@ Future<void> logOut(BuildContext context) {
           content: CommText(
               text: 'drawer.logOutMessage'.tr(),
               textAlign: TextAlign.center,
-              textColor: AppColors.navBarColor,
+              textColor: AppColors.textColor,
               fontWeight: FontWeight.w400),
           actions: <Widget>[
             CupertinoDialogAction(
               child: CommText(
                 text: 'drawer.cancel'.tr(),
-                textColor: AppColors.appBakColor,
+                textColor: AppColors.buttonColor,
               ),
               onPressed: () {
                 context.router.pop();

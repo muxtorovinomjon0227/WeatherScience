@@ -43,8 +43,7 @@ class UserIfo extends StatelessWidget {
         placeholder: (context, url) => buttonLoaderColor,
         errorWidget: (context, url, error) => CircleAvatar(
             radius: 100.sp,
-            child: ClipOval(
-                child: Image.asset(AppIcons.avatar).paddingAll(16.sp))),
+            child: ClipOval(child: Image.asset(AppIcons.avatar).paddingAll(16.sp))),
       ).paddingAll(0),
     );
   }
