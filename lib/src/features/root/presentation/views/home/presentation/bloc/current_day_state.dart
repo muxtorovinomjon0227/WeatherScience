@@ -13,3 +13,10 @@ sealed class CurrentDayState extends Equatable{}
   @override
   List<Object?> get props => [currentDayModel];
 }
+
+class ExceptionState extends CurrentDayState{
+ final String message;
+ ExceptionState({required this.message});
+ @override
+ List<Object?> get props => [message];
+}

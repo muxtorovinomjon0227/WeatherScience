@@ -11,3 +11,11 @@ class FetchDataEvent extends CurrentDayEvent{
   @override
   List<Object?> get props => [q,units,context];
 }
+class UpdateDataEvent extends CurrentDayEvent{
+  final String q;
+  final String units;
+  final BuildContext context;
+  UpdateDataEvent({required this.context, required this.q,required this.units});
+  @override
+  List<Object?> get props => [q,units,context];
+}
