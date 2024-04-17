@@ -6,13 +6,13 @@ import 'package:weather_science/src/core/utils/loader.dart';
 class DialogUtils {
   DialogUtils._();
 
-  static late BuildContext dialogContext;
+  static late BuildContext ctx;
 
   static void showLoading(BuildContext context) {
     showCupertinoDialog(
       context: context,
       builder: (context) {
-        dialogContext = context;
+        ctx = context;
         return Center(
           child: Container(
               width: 100.0.sp,
@@ -21,12 +21,12 @@ class DialogUtils {
                 color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(12.sp),
               ),
-              child: buttonLoader),
+              child: buttonLoaderColor),
         );
       },
     );
   }
   static void popDialog(){
-    Navigator.pop(dialogContext);
+    Navigator.pop(ctx);
   }
 }

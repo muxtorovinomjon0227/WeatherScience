@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:weather_science/src/core/router/router.gr.dart';
-import 'package:weather_science/src/core/utils/dialogs.dart';
 import 'package:weather_science/src/core/utils/pop_up_modal.dart';
 import 'package:weather_science/src/features/auth/data/models/remote/user/user_model.dart';
 import '../../data/repositories/auth_repository_impl.dart';
@@ -33,10 +32,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _loginWithGoogle(LoginWithGoogleEvent event, Emitter<AuthState> emit) async {
    await _authRepositoryImpl.signInWithGoogle(context: event.context).then((value) =>
-        value.fold((l) => ExceptionState(message: l.message), (r){
+        value.fold((l) {
+          popUp(event.context, error: l.message);
+          ExceptionState(message: l.message);}, (r){
           event.context.router.push(const HomeView());
-                  LoginState(user: r);})).whenComplete(() => DialogUtils.popDialog());
-  }
+                  LoginState(user: r);}));}
 
   Future<void> _logInEmailPass(LoginEmailPassEvent event, Emitter<AuthState> emit) async {
    await _authRepositoryImpl.signInEmailPassword(context: event.context, email: event.email, password: event.pass).then(
@@ -44,7 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
              emit(NoRegisterState(isNoRegister: true));
              popUp(event.context, error: l.message);}, (r){
                event.context.router.push(const HomeView());
-               LoginState(user: r);})).whenComplete(() => DialogUtils.popDialog());
+               LoginState(user: r);}));
   }
 
   Future<void> _signUpEmailPass(SignUpEmailPassEvent event, Emitter<AuthState> emit) async {
@@ -52,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             (value) => value.fold((l){emit(NoRegisterState(isNoRegister: true));
           popUp(event.context, error: l.message);}, (r){
             event.context.router.push(const HomeView());
-            LoginState(user: r);})).whenComplete(() => DialogUtils.popDialog());
+            LoginState(user: r);}));
   }
 
   void _sigInOrSignUp(SignUpOrSignInEvent event, Emitter<AuthState> emit){

@@ -2,7 +2,10 @@
   "keyword": {
     "oopsTitle": "Oops something went wrong",
     "oops": "Oops!",
-    "ok": "OK"
+    "ok": "OK",
+    "connectMessage": "Internet connection is not available",
+    "offline": "Offline mode",
+    "connect": "Connection"
   },
 
   "authView": {
@@ -13,7 +16,12 @@
     "notAccount" : "Don't have an account?",
     "haveAccount" : "Do you have an account?",
     "signUp" : "Sign Up",
-    "signIn" : "Sign In"
+    "signIn" : "Sign In",
+    "passLang" : "Password must be longer than 6 characters.\n",
+    "uppercase" : "• Uppercase letter is missing.\n",
+    "lowercase" : "• Lowercase letter is missing.\n",
+    "number" : "• Digit is missing.\n",
+    "character" : "• Special character is missing.\n"
   },
 
   "rootView": {

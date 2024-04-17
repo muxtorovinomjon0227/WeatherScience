@@ -33,7 +33,6 @@ class App extends StatelessWidget with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     logger.i(dotenv.env['API_KEY']);
     WidgetsBinding.instance.addObserver(this);
-    InternetService.onConnectivityChanged(context);
     int getDeviceType() {
       final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
       AppUtils.isTable = data.size.shortestSide < 600 ? false : true;

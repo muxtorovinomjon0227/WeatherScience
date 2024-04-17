@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/pop_up_modal.dart';
+
 class ConnectivityService {
 
   Future<bool> checkConnectivity() async {
@@ -26,6 +28,9 @@ class InternetService {
   static Future<void> onConnectivityChanged(BuildContext context) async {
     _subscription = Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> result) async {
       bool isConnection = await ConnectivityService().checkConnectivity();
+      if(!isConnection && context.mounted){
+        connectPopUp(context);
+      }
     });
   }
 

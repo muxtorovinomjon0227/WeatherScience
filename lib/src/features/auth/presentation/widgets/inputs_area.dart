@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/consts/icons/app_icons.dart';
 import 'package:weather_science/src/core/extensions/widget_ext.dart';
+import '../../../../core/config/validators.dart';
 import '../../../../core/consts/colors/app_colors.dart';
 import '../../../../core/widgets/common_input.dart';
 
@@ -28,8 +29,9 @@ class InputsArea extends StatelessWidget {
           prefix: const Icon(Icons.email_outlined),
           controller: loginController,
           placeholder: 'authView.inputEmail'.tr(),
-          errorText: 'authView.inputEmail'.tr(),
           focusNode: loginFocusNode,
+          validator: validateEmail,
+          keyboardType: TextInputType.emailAddress,
         ),
         const Divider(thickness: 0.5),
         CommonInput(
@@ -39,8 +41,8 @@ class InputsArea extends StatelessWidget {
               child: Image.asset(AppIcons.password)),
           controller: passwordController,
           placeholder: 'authView.inputPassword'.tr(),
-          errorText: 'authView.inputPassword'.tr(),
           focusNode: passwordFocusNode,
+          validator: validatePassword,
         ),
       ],
     ).paddingSymmetric(horizontal: 16.sp);

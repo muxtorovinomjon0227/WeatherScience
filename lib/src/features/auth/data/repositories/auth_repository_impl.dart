@@ -6,7 +6,6 @@ import 'package:weather_science/src/core/utils/app_utils.dart';
 import '../../../../core/http/error_handler.dart';
 import '../../../../core/http/failure.dart';
 import '../../../../core/services/on_connectivity_changed_service.dart';
-import '../../../../core/utils/dialogs.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../models/remote/user/user_model.dart';
 
@@ -47,7 +46,7 @@ class AuthRepositoryImpl extends AuthRepository {
             userName: credential.user?.displayName ?? "");
         return Right(AppUtils.user);
       } on FirebaseAuthException catch (e) {
-        return Left(ErrorHandler.handle(e).failure);
+        return Left(Failure(-7,e.message ?? ""));
       }
     } else {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
@@ -65,7 +64,7 @@ class AuthRepositoryImpl extends AuthRepository {
             userName: credential.user?.displayName ?? "");
         return Right(AppUtils.user);
       } on FirebaseAuthException catch (e) {
-        return Left(ErrorHandler.handle(e).failure);
+        return Left(Failure(-7,e.message ?? ""));
       }
     } else {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());

@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/utils/dialogs.dart';
-import 'package:weather_science/src/core/utils/pop_up_modal.dart';
 import 'package:weather_science/src/core/widgets/common_text.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/services/on_connectivity_changed_service.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/inputs_area.dart';
 import '../widgets/login_button.dart';
@@ -32,6 +32,7 @@ class _AuthViewState extends State<AuthView> {
   final FocusNode _passwordFocusNode = FocusNode();
 
   late bool _isNoRegister = false;
+  late BuildContext _ctx;
 
   @override
   void dispose() {
@@ -44,6 +45,8 @@ class _AuthViewState extends State<AuthView> {
 
   @override
   Widget build(BuildContext context) {
+    _ctx = context;
+    InternetService.onConnectivityChanged(context);
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         if (state is NoRegisterState) {
@@ -90,27 +93,22 @@ class _AuthViewState extends State<AuthView> {
   }
 
   Future<void> _onLogin() async {
+
     if (_formKey.currentState!.validate()) {
-      DialogUtils.showLoading(context);
-      di<AuthBloc>().add(LoginEmailPassEvent(
-          context: context,
-          email: _emailController.text,
-          pass: _passwordController.text));
+      DialogUtils.showLoading(_ctx);
+      di<AuthBloc>().add(LoginEmailPassEvent(context: context, email: _emailController.text, pass: _passwordController.text));
     }
   }
 
   Future<void> _signUp() async {
     if (_formKey.currentState!.validate()) {
-      DialogUtils.showLoading(context);
-      di<AuthBloc>().add(SignUpEmailPassEvent(
-          context: context,
-          email: _emailController.text,
-          pass: _passwordController.text));
+      DialogUtils.showLoading(_ctx);
+      di<AuthBloc>().add(SignUpEmailPassEvent(context: context, email: _emailController.text, pass: _passwordController.text));
     }
   }
 
   Future<void> _onLoginWithGoogle() async {
-    DialogUtils.showLoading(context);
+    DialogUtils.showLoading(_ctx);
     di<AuthBloc>().add(LoginWithGoogleEvent(context: context));
   }
 }
