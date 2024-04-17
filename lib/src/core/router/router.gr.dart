@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/cupertino.dart' as _i9;
 import 'package:weather_science/src/features/auth/presentation/views/auth_view.dart'
     as _i1;
 import 'package:weather_science/src/features/root/presentation/views/calendar/presentation/views/calendar_view.dart'
@@ -48,9 +49,11 @@ abstract class $AppRouter extends _i8.RootStackRouter {
       );
     },
     HomeView.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeViewArgs>(orElse: () => const HomeViewArgs());
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.HomeView(),
+        child: _i4.HomeView(key: args.key),
       );
     },
     RootView.name: (routeData) {
@@ -118,16 +121,31 @@ class ChooseThemeView extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.HomeView]
-class HomeView extends _i8.PageRouteInfo<void> {
-  const HomeView({List<_i8.PageRouteInfo>? children})
-      : super(
+class HomeView extends _i8.PageRouteInfo<HomeViewArgs> {
+  HomeView({
+    _i9.Key? key,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
           HomeView.name,
+          args: HomeViewArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'HomeView';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i8.PageInfo<HomeViewArgs> page =
+      _i8.PageInfo<HomeViewArgs>(name);
+}
+
+class HomeViewArgs {
+  const HomeViewArgs({this.key});
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'HomeViewArgs{key: $key}';
+  }
 }
 
 /// generated route for

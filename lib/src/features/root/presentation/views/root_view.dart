@@ -21,7 +21,7 @@ class _RootViewState extends State<RootView> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [
+      routes:  [
         HomeView(),
         CalendarView(),
         SearchView(),

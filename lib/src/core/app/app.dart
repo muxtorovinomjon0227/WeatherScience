@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../main.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../features/root/presentation/views/home/presentation/bloc/current_day_bloc.dart';
 import '../../features/theme/presentation/cubit/theme_cubit.dart';
 import '../../features/theme/presentation/cubit/theme_state.dart';
 import '../di/di.dart';
@@ -31,7 +32,6 @@ class App extends StatelessWidget with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    logger.i(dotenv.env['API_KEY']);
     WidgetsBinding.instance.addObserver(this);
     int getDeviceType() {
       final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
@@ -47,6 +47,7 @@ class App extends StatelessWidget with WidgetsBindingObserver {
           return MultiBlocProvider(
             providers: [
               BlocProvider<AuthBloc>.value(value: di.get<AuthBloc>()),
+              BlocProvider<CurrentDayBloc>.value(value: di.get<CurrentDayBloc>()),
             ],
             child: BlocProvider<ThemeCubit>(
               create: (context) => ThemeCubit(),
