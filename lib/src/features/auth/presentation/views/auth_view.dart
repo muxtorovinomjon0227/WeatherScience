@@ -25,8 +25,8 @@ class AuthView extends StatefulWidget {
 
 class _AuthViewState extends State<AuthView> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: "inomjon@gmail.com");
-  final _passwordController = TextEditingController(text: "Inomjon");
+  final _emailController = TextEditingController(text: "inomjon0227@gmail.com");
+  final _passwordController = TextEditingController(text: "Inomjon0227.");
 
   final FocusNode _loginFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();

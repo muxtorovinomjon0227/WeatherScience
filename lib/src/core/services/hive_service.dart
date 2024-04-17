@@ -26,7 +26,7 @@ class HiveService {
     await box.put(BoxConst.cityKey, cityName);
   }
   static String getCity() {
-    AppUtils.cityName = box.get(BoxConst.cityKey) ?? "";
+    AppUtils.cityName = box.get(BoxConst.cityKey) ?? "Tashkent";
     return AppUtils.cityName;
   }
   static Future<void> removeCity() async {
