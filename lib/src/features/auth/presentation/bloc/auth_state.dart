@@ -7,11 +7,17 @@ abstract class AuthState extends Equatable {
 
 class LoginState extends AuthState {
   LoginState({required this.user});
-  final User user;
+  final UserModel user;
   @override
   List<Object> get props => [user];
 }
 
+class NoRegisterState extends AuthState {
+  final bool isNoRegister;
+  NoRegisterState({required this.isNoRegister});
+  @override
+  List<Object> get props => [isNoRegister];
+}
 class LogoOutState extends AuthState {}
 
 class ExceptionState extends AuthState {

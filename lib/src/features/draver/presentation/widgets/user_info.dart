@@ -25,7 +25,7 @@ class UserIfo extends StatelessWidget {
           SizedBox(height: 40.sp),
           _avatar(),
           SizedBox(height: 16.sp),
-          CommText(text: AppUtils.user.displayName ?? "", fontSize: 16.sp),
+          CommText(text: AppUtils.user.userName ?? "", fontSize: 16.sp),
           CommText(text: AppUtils.user.email ?? ""),
           SizedBox(height: 16.sp),
         ],
@@ -38,7 +38,7 @@ class UserIfo extends StatelessWidget {
       child: CachedNetworkImage(
         width: 100,
         height: 100,
-        imageUrl: AppUtils.user.photoURL ?? "",
+        imageUrl: AppUtils.user.imageUrl ?? "",
         fit: BoxFit.fill,
         placeholder: (context, url) => buttonLoaderColor,
         errorWidget: (context, url, error) => CircleAvatar(

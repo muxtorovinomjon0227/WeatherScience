@@ -2,17 +2,17 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:weather_science/main.dart';
 import 'package:weather_science/src/core/utils/app_utils.dart';
 import '../../../../core/http/error_handler.dart';
 import '../../../../core/http/failure.dart';
 import '../../../../core/services/on_connectivity_changed_service.dart';
+import '../../../../core/utils/dialogs.dart';
 import '../../domain/repositories/auth_repository.dart';
+import '../models/remote/user/user_model.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-
   @override
-  Future<Either<Failure, User>> signInWithGoogle({required BuildContext context}) async {
+  Future<Either<Failure, UserModel>> signInWithGoogle({required BuildContext context}) async {
     if (await InternetService.isConnection()) {
       try {
         final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -23,28 +23,11 @@ class AuthRepositoryImpl extends AuthRepository {
           idToken: googleSignInAuthentication.idToken,
         );
         final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-        final User? user = userCredential.user;
-        AppUtils.user = user!;
-        return Right(user);
-      } catch (error) {
-        return Left(ErrorHandler.handle(error).failure);
-      }
-    } else {
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
-    }
-  }
-
-
-  @override
-  Future<Either<Failure, dynamic>> signUpEmailPassword({required BuildContext context, required String email, required String password}) async {
-    if (await InternetService.isConnection()) {
-      try {
-        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-        logger.i(credential);
-        return Right("sdf");
+        AppUtils.user = UserModel(
+            email: userCredential.user?.email ?? "",
+            userName: userCredential.user?.displayName ?? "",
+            imageUrl: userCredential.user?.photoURL ?? "");
+        return Right(AppUtils.user);
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
       }
@@ -54,23 +37,38 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, dynamic>> signInEmailPassword({required BuildContext context,required String email,required String password}) async {
+  Future<Either<Failure, UserModel>> signUpEmailPassword({required BuildContext context, required String email, required String password}) async {
     if (await InternetService.isConnection()) {
       try {
-
-        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-        logger.i(credential);
-
-        return Right("sdf");
-      } catch (error) {
-        return Left(ErrorHandler.handle(error).failure);
+        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password,);
+        AppUtils.user = UserModel(
+            imageUrl: credential.user?.photoURL ?? "",
+            email: credential.user?.email ?? "",
+            userName: credential.user?.displayName ?? "");
+        return Right(AppUtils.user);
+      } on FirebaseAuthException catch (e) {
+        return Left(ErrorHandler.handle(e).failure);
       }
     } else {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
 
+  @override
+  Future<Either<Failure, UserModel>> signInEmailPassword({required BuildContext context, required String email, required String password}) async {
+    if (await InternetService.isConnection()) {
+      try {
+        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+        AppUtils.user = UserModel(
+            imageUrl: credential.user?.photoURL ?? "",
+            email: credential.user?.email ?? "",
+            userName: credential.user?.displayName ?? "");
+        return Right(AppUtils.user);
+      } on FirebaseAuthException catch (e) {
+        return Left(ErrorHandler.handle(e).failure);
+      }
+    } else {
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
 }

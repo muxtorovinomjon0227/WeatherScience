@@ -17,4 +17,18 @@ class LoginEmailPassEvent extends AuthEvent {
   const LoginEmailPassEvent({required this.email, required this.pass, required this.context,});
 }
 
+class SignUpEmailPassEvent extends AuthEvent {
+  final BuildContext context;
+  final String email;
+  final String pass;
+  const SignUpEmailPassEvent({required this.email, required this.pass, required this.context});
+}
+
+class SignUpOrSignInEvent extends AuthEvent {
+  final bool isNoRegister;
+  const SignUpOrSignInEvent({required this.isNoRegister});
+  @override
+  List<Object> get props => [isNoRegister];
+}
+
 class LogOutEvent extends AuthEvent {}

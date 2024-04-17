@@ -11,7 +11,9 @@
     "inputPassword" : "Enter Your Password",
     "authWith" : "Or Login With",
     "notAccount" : "Don't have an account?",
-    "signUp" : "Sign Up"
+    "haveAccount" : "Do you have an account?",
+    "signUp" : "Sign Up",
+    "signIn" : "Sign In"
   },
 
   "rootView": {

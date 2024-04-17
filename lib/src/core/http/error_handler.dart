@@ -141,7 +141,7 @@ class ResponseMessage {
   static const String SEND_TIMEOUT = NetworkMessages.strTimeoutError;
   static const String CACHE_ERROR = NetworkMessages.strCacheError;
   static const String NO_INTERNET_CONNECTION = NetworkMessages.strNoInternetError;
-  static const String DEFAULT = NetworkMessages.strDefaultError;
+  static const String DEFAULT = NetworkMessages.strUnauthorizedError;
 }
 
 class ApiInternalStatus {

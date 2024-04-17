@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,27 +9,26 @@ import '../consts/colors/app_colors.dart';
 import '../router/router.gr.dart';
 import '../widgets/common_text.dart';
 
-Future<void> popUp(
-  BuildContext context, {
-  required String error,
-}) {
+Future<void> popUp(BuildContext context, {required String error,}) {
   return showCupertinoDialog(
     context: context,
     builder: (context) {
       return Theme(
-        data: ThemeData(
-            dialogTheme: const DialogTheme(
-              shadowColor: AppColors.appBakColor,
-              backgroundColor: AppColors.appBakColor,)),
+        data: ThemeData.dark(),
         child: CupertinoAlertDialog(
-          title: Text(
-            'oops'.tr(),
-            style: const TextStyle(color: AppColors.red),
+          title: CommText(
+            text: 'keyword.oops'.tr(),
+             textColor: AppColors.red,
+             textAlign: TextAlign.center,
+             fontWeight: FontWeight.w700,
           ),
           content: Text(error),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text('ok'.tr()),
+              child: CommText(
+                  text:'keyword.ok'.tr(),
+                textColor: AppColors.buttonColor,
+              ),
               onPressed: () {
                 context.router.pop();
               },
@@ -45,10 +45,7 @@ Future<void> logOut(BuildContext context) {
     context: context,
     builder: (context) {
       return Theme(
-        data: ThemeData(
-          dialogTheme: const DialogTheme(
-            shadowColor: AppColors.appBakColor,
-            backgroundColor: AppColors.appBakColor,)),
+        data: ThemeData.dark(),
         child: CupertinoAlertDialog(
           title: CommText(
               text: 'drawer.attention'.tr(),
@@ -73,8 +70,11 @@ Future<void> logOut(BuildContext context) {
             CupertinoDialogAction(
               child: CommText(
                   text: 'drawer.logOut'.tr(), textColor: AppColors.red),
-              onPressed: () {
-                context.router.push(const AuthView());
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                if(context.mounted){
+                  context.router.push(const AuthView());
+                }
               },
             ),
           ],
