@@ -36,6 +36,6 @@ class CurrentDayBloc extends Bloc<CurrentDayEvent, CurrentDayState> {
     await _homeRepositoryImpl.getData(q: event.q, units: event.units).then((value) => value.fold(
             (l) => emit(ExceptionState(message: l.message)),
             (r) {emit(FetchedDataState(currentDayModel: r));})).whenComplete(
-          () => DialogUtils.popDialog(),);
+          () => Loaders.popDialog(),);
   }
 }

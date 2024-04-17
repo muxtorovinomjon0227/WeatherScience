@@ -27,7 +27,7 @@ class CurrentTemp extends StatelessWidget {
       height: 180.sp,
       imageUrl: "http://openweathermap.org/img/w/${dayModel.weather?.first.icon ?? ""}.png",
       fit: BoxFit.fill,
-      placeholder: (context, url) => buttonLoaderColor,
+      placeholder: (context, url) => buttonLoader,
       errorWidget: (context, url, error) => CircleAvatar(
         child: ClipOval(
           child: Image.asset(AppIcons.avatar).paddingAll(16.sp),

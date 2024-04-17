@@ -48,7 +48,7 @@ class HomeView extends StatelessWidget {
     );
   }
   Future<void> _updateData() async {
-    DialogUtils.showLoading(_ctx);
+    Loaders.showLoading(_ctx);
     di<CurrentDayBloc>().add(UpdateDataEvent(context: _ctx, q: 'Toshkent', units: 'metric'));
   }
 }

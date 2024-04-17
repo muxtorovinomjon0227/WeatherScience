@@ -47,68 +47,71 @@ class _AuthViewState extends State<AuthView> {
   Widget build(BuildContext context) {
     _ctx = context;
     InternetService.onConnectivityChanged(context);
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        if (state is NoRegisterState) {
-          _isNoRegister = state.isNoRegister;
-        }
-        return GestureDetector(
-          onTap: () {
-            _loginFocusNode.unfocus();
-            _passwordFocusNode.unfocus();
-          },
-          child: CupertinoPageScaffold(
-            child: Form(
-              key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: 60.h),
-                    const Welcome(),
-                    SizedBox(height: 60.h),
-                    InputsArea(
-                        loginController: _emailController,
-                        passwordController: _passwordController,
-                        loginFocusNode: _loginFocusNode,
-                        passwordFocusNode: _passwordFocusNode),
-                    SizedBox(height: 32.h),
-                   _isNoRegister
-                       ? SignUpButton(signUp: _signUp)
-                       : LoginButton(onLogin: _onLogin),
-                    SizedBox(height: 24.h),
-                    CommText(text: 'authView.authWith'.tr()),
-                    SizedBox(height: 16.h),
-                    GoogleButton(onRegister: _onLoginWithGoogle),
-                    SizedBox(height: 16.h),
-                    SignUpOrSignIn(isNoRegister: _isNoRegister),
-                  ],
+    return PopScope(
+      canPop: false,
+      child: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          if (state is NoRegisterState) {
+            _isNoRegister = state.isNoRegister;
+          }
+          return GestureDetector(
+            onTap: () {
+              _loginFocusNode.unfocus();
+              _passwordFocusNode.unfocus();
+            },
+            child: CupertinoPageScaffold(
+              child: Form(
+                key: _formKey,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 60.h),
+                      const Welcome(),
+                      SizedBox(height: 60.h),
+                      InputsArea(
+                          loginController: _emailController,
+                          passwordController: _passwordController,
+                          loginFocusNode: _loginFocusNode,
+                          passwordFocusNode: _passwordFocusNode),
+                      SizedBox(height: 32.h),
+                     _isNoRegister
+                         ? SignUpButton(signUp: _signUp)
+                         : LoginButton(onLogin: _onLogin),
+                      SizedBox(height: 24.h),
+                      CommText(text: 'authView.authWith'.tr()),
+                      SizedBox(height: 16.h),
+                      GoogleButton(onRegister: _onLoginWithGoogle),
+                      SizedBox(height: 16.h),
+                      SignUpOrSignIn(isNoRegister: _isNoRegister),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
   Future<void> _onLogin() async {
 
     if (_formKey.currentState!.validate()) {
-      DialogUtils.showLoading(_ctx);
+      Loaders.showLoading(_ctx);
       di<AuthBloc>().add(LoginEmailPassEvent(context: context, email: _emailController.text, pass: _passwordController.text));
     }
   }
 
   Future<void> _signUp() async {
     if (_formKey.currentState!.validate()) {
-      DialogUtils.showLoading(_ctx);
+      Loaders.showLoading(_ctx);
       di<AuthBloc>().add(SignUpEmailPassEvent(context: context, email: _emailController.text, pass: _passwordController.text));
     }
   }
 
   Future<void> _onLoginWithGoogle() async {
-    DialogUtils.showLoading(_ctx);
+    Loaders.showLoading(_ctx);
     di<AuthBloc>().add(LoginWithGoogleEvent(context: context));
   }
 }

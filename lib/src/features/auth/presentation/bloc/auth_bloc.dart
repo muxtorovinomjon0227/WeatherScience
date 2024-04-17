@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:weather_science/src/core/di/di.dart';
+import 'package:weather_science/src/core/utils/app_utils.dart';
 import 'package:weather_science/src/core/utils/pop_up_modal.dart';
 import 'package:weather_science/src/features/auth/data/models/remote/user/user_model.dart';
 import 'package:weather_science/src/features/root/presentation/views/home/presentation/bloc/current_day_bloc.dart';
@@ -35,21 +36,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         value.fold((l) {
           popUp(event.context, error: l.message);
           ExceptionState(message: l.message);}, (r){
-          di<CurrentDayBloc>().add(FetchDataEvent(q: 'Fergana', units: 'metric', context: event.context));}));}
+          di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: 'metric', context: event.context));}));}
 
   Future<void> _logInEmailPass(LoginEmailPassEvent event, Emitter<AuthState> emit) async {
    await _authRepositoryImpl.signInEmailPassword(context: event.context, email: event.email, password: event.pass).then(
            (value) => value.fold((l){
              emit(NoRegisterState(isNoRegister: true));
              popUp(event.context, error: l.message);}, (r){
-             di<CurrentDayBloc>().add(FetchDataEvent(q: 'Fergana', units: 'metric', context: event.context));}));
+             di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: 'metric', context: event.context));}));
   }
 
   Future<void> _signUpEmailPass(SignUpEmailPassEvent event, Emitter<AuthState> emit) async {
    await _authRepositoryImpl.signUpEmailPassword(context: event.context, email: event.email, password: event.pass).then(
             (value) => value.fold((l){emit(NoRegisterState(isNoRegister: true));
           popUp(event.context, error: l.message);}, (r){
-              di<CurrentDayBloc>().add(FetchDataEvent(q: 'Fergana', units: 'metric', context: event.context));}));
+              di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: 'metric', context: event.context));}));
   }
 
   void _sigInOrSignUp(SignUpOrSignInEvent event, Emitter<AuthState> emit){

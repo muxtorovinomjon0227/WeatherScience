@@ -16,7 +16,6 @@ class AppRouter extends $AppRouter {
           children: [
             AutoRoute(page: HomeView.page),
             AutoRoute(page: CalendarView.page),
-            AutoRoute(page: SearchView.page),
           ],
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),

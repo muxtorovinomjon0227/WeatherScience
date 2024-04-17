@@ -21,4 +21,15 @@ class HiveService {
   static Future<void> removeTheme() async {
     await box.delete(BoxConst.themeKey);
   }
+
+  static Future<void> saveCity(String cityName) async {
+    await box.put(BoxConst.cityKey, cityName);
+  }
+  static String getCity() {
+    AppUtils.cityName = box.get(BoxConst.cityKey) ?? "";
+    return AppUtils.cityName;
+  }
+  static Future<void> removeCity() async {
+    await box.delete(BoxConst.cityKey);
+  }
 }

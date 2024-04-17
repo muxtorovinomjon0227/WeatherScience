@@ -5,4 +5,5 @@ class AppUtils {
   static bool isTable = false;
   static bool blueTheme = false;
   static late UserModel user;
+  static  String cityName = "Tashkent";
 }

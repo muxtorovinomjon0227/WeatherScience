@@ -31,7 +31,7 @@ Future<void> popUp(BuildContext context, {required String error,}) {
                 textColor: AppColors.buttonColor,
               ),
               onPressed: () {
-                Navigator.pop(DialogUtils.ctx);
+                Navigator.pop(Loaders.ctx);
                 context.router.pop();
               },
             ),
