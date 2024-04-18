@@ -1,10 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../main.dart';
 import '../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../features/language/presentation/bloc/language_bloc.dart';
 import '../../features/root/presentation/views/calendar/presentation/bloc/calendar_bloc.dart';
 import '../../features/root/presentation/views/home/presentation/bloc/current_day_bloc.dart';
 import '../../features/theme/presentation/cubit/theme_cubit.dart';
@@ -39,7 +38,6 @@ class App extends StatelessWidget with WidgetsBindingObserver {
       AppUtils.isTable = data.size.shortestSide < 600 ? false : true;
       return data.size.shortestSide < 600 ? 1 : 2;
     }
-
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
       child: ScreenUtilInit(
@@ -50,6 +48,7 @@ class App extends StatelessWidget with WidgetsBindingObserver {
               BlocProvider<AuthBloc>.value(value: di.get<AuthBloc>()),
               BlocProvider<CurrentDayBloc>.value(value: di.get<CurrentDayBloc>()),
               BlocProvider<CalendarBloc>.value(value: di.get<CalendarBloc>()),
+              BlocProvider<LanguageBloc>.value(value: di.get<LanguageBloc>()),
             ],
             child: BlocProvider<ThemeCubit>(
               create: (context) => ThemeCubit(),

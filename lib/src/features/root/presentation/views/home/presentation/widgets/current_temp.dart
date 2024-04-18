@@ -30,7 +30,7 @@ class CurrentTemp extends StatelessWidget {
       placeholder: (context, url) => buttonLoader,
       errorWidget: (context, url, error) => CircleAvatar(
         child: ClipOval(
-          child: Image.asset(AppIcons.avatar).paddingAll(16.sp),
+          child: Image.asset(AppIcons.defaultIcon).paddingAll(16.sp),
         ),
       ),
     );

@@ -8,6 +8,11 @@
     "connect": "Connection"
   },
 
+  "language": {
+    "title" : "Select a language",
+    "next" : "Next"
+  },
+
   "authView": {
     "welcome" : "Login to Your Account",
     "inputEmail" : "Enter Your Email",

@@ -18,7 +18,7 @@ class CurrentDayModel with _$CurrentDayModel {
     int? timezone,
     int? id,
     String? name,
-    int? cod,
+    dynamic cod,
   }) = _CurrentDayModel;
 
   factory CurrentDayModel.fromJson(Map<String, dynamic> json) => _$CurrentDayModelFromJson(json);

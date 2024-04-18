@@ -33,7 +33,7 @@ _$CurrentDayModelImpl _$$CurrentDayModelImplFromJson(
       timezone: json['timezone'] as int?,
       id: json['id'] as int?,
       name: json['name'] as String?,
-      cod: json['cod'] as int?,
+      cod: json['cod'],
     );
 
 Map<String, dynamic> _$$CurrentDayModelImplToJson(

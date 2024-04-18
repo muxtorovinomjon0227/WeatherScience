@@ -12,5 +12,9 @@ class AppIcons {
    static const String password = 'assets/icons/password.png';
    static const String avatar = 'assets/icons/avatar.png';
    static const String logout = 'assets/icons/logout.png';
+   static const String defaultIcon = 'assets/icons/defaultIcon.png';
+   static const String uzbekistan = 'assets/icons/uzbekistan.png';
+   static const String rusFlag = 'assets/icons/rusflag.png';
+   static const String english = 'assets/icons/english.png';
 }
 

@@ -32,7 +32,7 @@ mixin _$CurrentDayModel {
   int? get timezone => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  int? get cod => throw _privateConstructorUsedError;
+  dynamic get cod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +59,7 @@ abstract class $CurrentDayModelCopyWith<$Res> {
       int? timezone,
       int? id,
       String? name,
-      int? cod});
+      dynamic cod});
 
   $CoordCopyWith<$Res>? get coord;
   $MainCopyWith<$Res>? get main;
@@ -147,7 +147,7 @@ class _$CurrentDayModelCopyWithImpl<$Res, $Val extends CurrentDayModel>
       cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
     ) as $Val);
   }
 
@@ -233,7 +233,7 @@ abstract class _$$CurrentDayModelImplCopyWith<$Res>
       int? timezone,
       int? id,
       String? name,
-      int? cod});
+      dynamic cod});
 
   @override
   $CoordCopyWith<$Res>? get coord;
@@ -324,7 +324,7 @@ class __$$CurrentDayModelImplCopyWithImpl<$Res>
       cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
     ));
   }
 }
@@ -384,7 +384,7 @@ class _$CurrentDayModelImpl implements _CurrentDayModel {
   @override
   final String? name;
   @override
-  final int? cod;
+  final dynamic cod;
 
   @override
   String toString() {
@@ -410,7 +410,7 @@ class _$CurrentDayModelImpl implements _CurrentDayModel {
                 other.timezone == timezone) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.cod, cod) || other.cod == cod));
+            const DeepCollectionEquality().equals(other.cod, cod));
   }
 
   @JsonKey(ignore: true)
@@ -429,7 +429,7 @@ class _$CurrentDayModelImpl implements _CurrentDayModel {
       timezone,
       id,
       name,
-      cod);
+      const DeepCollectionEquality().hash(cod));
 
   @JsonKey(ignore: true)
   @override
@@ -460,7 +460,7 @@ abstract class _CurrentDayModel implements CurrentDayModel {
       final int? timezone,
       final int? id,
       final String? name,
-      final int? cod}) = _$CurrentDayModelImpl;
+      final dynamic cod}) = _$CurrentDayModelImpl;
 
   factory _CurrentDayModel.fromJson(Map<String, dynamic> json) =
       _$CurrentDayModelImpl.fromJson;
@@ -490,7 +490,7 @@ abstract class _CurrentDayModel implements CurrentDayModel {
   @override
   String? get name;
   @override
-  int? get cod;
+  dynamic get cod;
   @override
   @JsonKey(ignore: true)
   _$$CurrentDayModelImplCopyWith<_$CurrentDayModelImpl> get copyWith =>

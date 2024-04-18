@@ -27,6 +27,7 @@ Future<void> run({Flavor env = Flavor.PROD}) async {await runZonedGuarded<Future
       await HiveService.initHive();
       await configureDependencies(env);
       await dotenv.load(fileName: ".env");
+      await EasyLocalization.ensureInitialized();
       Bloc.observer = AppBlocObserver();
       runApp(
         EasyLocalization(
@@ -37,7 +38,6 @@ Future<void> run({Flavor env = Flavor.PROD}) async {await runZonedGuarded<Future
             Locale('ru'),
           ],
           fallbackLocale: const Locale('en'),
-          startLocale: const Locale('en'),
           child: App(),
         ),
       );

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:weather_science/src/core/services/hive_service.dart';
 import '../../../../../../../core/consts/apis/api_endpoints.dart';
 import '../../../../../../../core/http/api_service.dart';
 import '../../../../../../../core/http/error_handler.dart';
@@ -19,12 +20,14 @@ class CalendarRepositoryImpl extends CalendarRepository {
     if (await InternetService.isConnection()) {
       try {
         Response response = await _apiService.get(endPoint: "${ApiEndpoints.week}?q=$q&appid=$_key&units=$units");
+        HiveService.saveFiveDaysWeather(response.data);
         return Right(MonthTempModel.fromJson(response.data));
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+      Map<String, dynamic> data = await HiveService.getFiveDaysWeather();
+      return Right(MonthTempModel.fromJson(data));
     }
   }
   }

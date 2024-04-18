@@ -80,7 +80,7 @@ class ChooseThemeView extends StatelessWidget {
 
   Future<void> _changeTheme(BuildContext ctx,ThemeData themeData) async {
    await HiveService.saveTheme(themeData == AppThemes.greenTheme ? true : false);
-   HiveService.getIsDark();
+   HiveService.greenTheme();
    if(ctx.mounted){
      ctx.read<ThemeCubit>().getTheme(ThemeState(themeData));
    }

@@ -8,6 +8,11 @@
     "connect": "Connection"
   },
 
+  "language": {
+    "title" : "Tilni tanlang",
+    "next" : "Keyingisi"
+  },
+
   "authView": {
     "welcome" : "Login to Your Account",
     "inputEmail" : "Enter Your Email",

@@ -7,6 +7,10 @@
     "offline": "Offline mode",
     "connect": "Connection"
   },
+  "language": {
+    "title" : "Выберите язык",
+    "next" : "Следующий"
+  },
 
   "authView": {
     "welcome" : "Login to Your Account",

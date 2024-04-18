@@ -4,7 +4,7 @@ import '../../../../core/theme/theme.dart';
 import 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(HiveService.getIsDark()
+  ThemeCubit() : super(HiveService.greenTheme()
             ? ThemeState(AppThemes.greenTheme)
             : ThemeState(AppThemes.blueTheme));
 

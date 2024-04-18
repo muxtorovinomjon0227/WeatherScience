@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> with AfterLayoutMixin {
   @override
   Future<void> afterFirstLayout(BuildContext context) async {
     FlutterNativeSplash.remove();
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
     await checkAuth();
   }
 
@@ -37,6 +37,6 @@ class _SplashViewState extends State<SplashView> with AfterLayoutMixin {
 
   Future<void> checkAuth() async {
     HiveService.getCity();
-    await context.router.push(const AuthView());
+    await context.router.push(SelectLangView());
   }
 }

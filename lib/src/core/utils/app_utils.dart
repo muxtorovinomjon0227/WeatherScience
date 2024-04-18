@@ -6,4 +6,5 @@ class AppUtils {
   static bool blueTheme = false;
   static late UserModel user;
   static  String cityName = "Tashkent";
+  static  String units = "metric";
 }
