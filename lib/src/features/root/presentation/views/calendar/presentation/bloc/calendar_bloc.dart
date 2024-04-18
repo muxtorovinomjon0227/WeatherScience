@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../../../core/di/di.dart';
+import '../../../../../../../core/utils/dialogs.dart';
 import '../../data/models/remote/month_temp/month_temp_model.dart';
 import '../../data/repositories/calendar_repository_impl.dart';
 
@@ -22,6 +23,6 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         emit(CalendarInitialState());
     await _calendarRepositoryImpl.getData(q: event.q, units: event.units).then((value) => value.fold(
             (l) => emit(ExceptionState(message: l.message)),
-            (r) {emit(FetchedDataState(monthTempModel: r));}));
+            (r) {emit(FetchedDataState(monthTempModel: r));})).whenComplete(() => Loaders.popDialog());
   }
 }

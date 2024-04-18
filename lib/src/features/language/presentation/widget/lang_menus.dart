@@ -73,6 +73,7 @@ class ChooseMenu extends StatelessWidget {
         di<LanguageBloc>().add(ChangeLangEvent(_ctx, const Locale('en')));
         break;
     }
+
   }
 
   Widget _icon(bool on) {

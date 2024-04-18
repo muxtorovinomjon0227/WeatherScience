@@ -56,4 +56,15 @@ class HiveService {
   static Future<void> removeFiveDaysWeather() async {
     await box.delete(BoxConst.oneDayWeather);
   }
+
+  static Future<void> saveVerifiedUser(bool isVerifiedUser) async {
+    await box.put(BoxConst.verifiedUserKey, isVerifiedUser);
+  }
+  static Future<bool> isVerifiedUser() async {
+    var data = await box.get(BoxConst.verifiedUserKey) ?? false;
+    return data;
+  }
+  static Future<void> removeVerifiedUser() async {
+    await box.delete(BoxConst.verifiedUserKey);
+  }
 }

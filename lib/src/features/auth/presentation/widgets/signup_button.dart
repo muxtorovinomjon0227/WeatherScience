@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/consts/colors/app_colors.dart';
@@ -19,7 +20,7 @@ class SignUpButton extends StatelessWidget {
       height: 48.sp,
       child: Center(
         child: CommText(
-            text: "Sign Up",
+            text: 'authView.signUp'.tr(),
           fontWeight: FontWeight.bold,
           fontSize: 20.sp,
           textColor: AppColors.appBakColor,

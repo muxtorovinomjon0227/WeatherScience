@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:weather_science/src/core/extensions/widget_ext.dart';
+import 'package:weather_science/src/core/consts/colors/app_colors.dart';
 import 'package:weather_science/src/core/widgets/common_text.dart';
 import '../../../../../../../core/consts/icons/app_icons.dart';
 import '../../../../../../../core/utils/loader.dart';
@@ -29,8 +29,9 @@ class CurrentTemp extends StatelessWidget {
       fit: BoxFit.fill,
       placeholder: (context, url) => buttonLoader,
       errorWidget: (context, url, error) => CircleAvatar(
+        backgroundColor: AppColors.appBakColor,
         child: ClipOval(
-          child: Image.asset(AppIcons.defaultIcon).paddingAll(16.sp),
+          child: Image.asset(AppIcons.defaultIcon)
         ),
       ),
     );

@@ -125,23 +125,23 @@ class ResponseCode {
 }
 
 class ResponseMessage {
-  static const String SUCCESS = NetworkMessages.success;
-  static const String NO_CONTENT = NetworkMessages.success;
-  static const String BAD_REQUEST = NetworkMessages.strBadRequestError;
-  static const String UNAUTORISED = NetworkMessages.strUnauthorizedError;
-  static const String FORBIDDEN = NetworkMessages.strForbiddenError;
-  static const String INTERNAL_SERVER_ERROR = NetworkMessages.strInternalServerError;
-  static const String NOT_FOUND = NetworkMessages.strNotFoundError;
-  static const String SERVER_ERROR = NetworkMessages.strServerError;
+  static  String SUCCESS = NetworkMessages.success;
+  static  String NO_CONTENT = NetworkMessages.success;
+  static  String BAD_REQUEST = NetworkMessages.strBadRequestError;
+  static  String UNAUTORISED = NetworkMessages.strUnauthorizedError;
+  static  String FORBIDDEN = NetworkMessages.strForbiddenError;
+  static  String INTERNAL_SERVER_ERROR = NetworkMessages.strInternalServerError;
+  static  String NOT_FOUND = NetworkMessages.strNotFoundError;
+  static  String SERVER_ERROR = NetworkMessages.strServerError;
 
   // local status code
-  static const String CONNECT_TIMEOUT = NetworkMessages.strTimeoutError;
-  static const String CANCEL = NetworkMessages.strDefaultError;
-  static const String RECIEVE_TIMEOUT = NetworkMessages.strTimeoutError;
-  static const String SEND_TIMEOUT = NetworkMessages.strTimeoutError;
-  static const String CACHE_ERROR = NetworkMessages.strCacheError;
-  static const String NO_INTERNET_CONNECTION = NetworkMessages.strNoInternetError;
-  static const String DEFAULT = NetworkMessages.strUnauthorizedError;
+  static  String CONNECT_TIMEOUT = NetworkMessages.strTimeoutError;
+  static  String CANCEL = NetworkMessages.strDefaultError;
+  static  String RECIEVE_TIMEOUT = NetworkMessages.strTimeoutError;
+  static  String SEND_TIMEOUT = NetworkMessages.strTimeoutError;
+  static  String CACHE_ERROR = NetworkMessages.strCacheError;
+  static  String NO_INTERNET_CONNECTION = NetworkMessages.strNoInternetError;
+  static  String DEFAULT = NetworkMessages.strUnauthorizedError;
 }
 
 class ApiInternalStatus {

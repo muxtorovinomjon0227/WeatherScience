@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/consts/colors/app_colors.dart';
@@ -19,14 +20,14 @@ class SignUpOrSignIn extends StatelessWidget {
             text: !isNoRegister
                 ? 'authView.notAccount'.tr()
                 : 'authView.haveAccount'.tr(),
-            fontSize: 16.sp),
+            fontSize: 14.sp),
         TextButton(
             onPressed: _sigInOrSignUp,
             child: CommText(
                 text: !isNoRegister
                     ? 'authView.signUp'.tr()
                     : 'authView.signIn'.tr(),
-                fontSize: 16.sp,
+                fontSize: 14.sp,
                 textColor: AppColors.buttonColor))
       ],
     );

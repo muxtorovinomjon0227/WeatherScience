@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:weather_science/src/core/di/di.dart';
+import 'package:weather_science/src/core/services/hive_service.dart';
 import 'package:weather_science/src/core/utils/dialogs.dart';
 import '../../../../../../../core/router/router.gr.dart';
 import '../../data/models/remote/current_day/current_day_model.dart';
@@ -29,7 +30,10 @@ class CurrentDayBloc extends Bloc<CurrentDayEvent, CurrentDayState> {
     await _homeRepositoryImpl.getData(q: event.q, units: event.units).then((value) => value.fold(
             (l) => emit(ExceptionState(message: l.message)),
             (r) {emit(FetchedDataState(currentDayModel: r));})).whenComplete(
-            () =>  event.context.router.push(HomeView()));
+            () {
+              HiveService.saveVerifiedUser(true);
+              event.context.router.push(HomeView());
+            });
   }
 
   Future<void> _updateData(UpdateDataEvent event, Emitter<CurrentDayState> emit) async {

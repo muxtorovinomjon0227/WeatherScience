@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/widgets/common_text.dart';
@@ -13,11 +14,11 @@ class MainCard extends StatelessWidget {
     return Row(
       children: [
         SizedBox(width: 16.sp),
-        _card(center: "${dayModel.wind?.speed?.truncate() ?? 0} km/h", bottom: 'Wind'),
+        _card(center: "${dayModel.wind?.speed?.truncate() ?? 0} km/h", bottom: 'homeView.wind'.tr()),
         SizedBox(width: 8.sp),
-        _card(center: "${dayModel.main?.humidity?.truncate() ?? 0} %", bottom: 'Humidity'),
+        _card(center: "${dayModel.main?.humidity?.truncate() ?? 0} %", bottom: 'homeView.humidity'.tr()),
         SizedBox(width: 8.sp),
-        _card(center: "${dayModel.main?.pressure?.truncate() ?? 0}", bottom: 'Pressure'),
+        _card(center: "${dayModel.main?.pressure?.truncate() ?? 0}", bottom: 'homeView.pressure'.tr()),
         SizedBox(width: 16.sp),
       ],
     );

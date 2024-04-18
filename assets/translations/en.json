@@ -6,7 +6,9 @@
     "connectMessage": "Internet connection is not available",
     "offline": "Offline mode",
     "connect": "Connection",
-    "ready": "Ready"
+    "ready": "Ready",
+    "refresh": "Refresh",
+    "search": "Enter the city name"
   },
 
   "language": {
@@ -41,5 +43,31 @@
     "cancel": "Cancel",
     "attention": "Attention!",
     "logOutMessage": "Are you sure you want to exit the application?"
+  },
+  "homeView": {
+    "today": "Today",
+    "like": "Like",
+    "min": "Min",
+    "max": "Max",
+    "wind": "Wind",
+    "humidity": "Humidity",
+    "pressure": "Pressure"
+  },
+  "network": {
+    "noRouteFound": "No Route Found",
+     "success" : "Success",
+     "strBadRequestError" : "Bad request. try again later",
+     "strNoContent" : "Success with not content",
+     "strForbiddenError" : "Forbidden request. try again later",
+     "strUnauthorizedError" :"User unauthorized, try again later",
+     "strNotFoundError" :"Url not found, try again later",
+     "strConflictError" : "Conflict found, try again later",
+     "strInternalServerError" : "Some thing went wrong, try again later",
+     "strUnknownError" : "Some thing went wrong, try again later",
+     "strTimeoutError" :"Time out, try again late",
+     "strDefaultError" : "Some thing went wrong, try again later",
+     "strCacheError" : "Cache error, try again later",
+     "strNoInternetError" : "Please check your internet connection",
+     "strServerError" : "Lost connection with server, try again later"
   }
 }

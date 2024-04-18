@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/extensions/widget_ext.dart';
@@ -9,8 +10,7 @@ class GlobalError extends StatelessWidget {
   final String? message;
   final String? buttonTitle;
   final VoidCallback? onPressed;
-  const GlobalError(
-      {super.key, this.message, this.onPressed, this.buttonTitle});
+  const GlobalError({super.key, this.message, this.onPressed, this.buttonTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class GlobalError extends StatelessWidget {
             children: [
               const Icon(Icons.cached, color: AppColors.appBakColor),
               SizedBox(width: 8.sp),
-              CommText(text: "Refresh",fontSize: 16.sp,textColor: AppColors.appBakColor)
+              CommText(text: 'keyword.refresh'.tr(),fontSize: 16.sp,textColor: AppColors.appBakColor)
             ],
           ),
         ).paddingSymmetric(horizontal: 16.sp),

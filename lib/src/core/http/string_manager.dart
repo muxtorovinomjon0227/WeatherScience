@@ -1,18 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class NetworkMessages {
 
-  static const String noRouteFound = "No Route Found";
-  static const String success = "Success";
-  static const String strBadRequestError = "Bad request. try again later";
-  static const String strNoContent = "Success with not content";
-  static const String strForbiddenError = "Forbidden request. try again later";
-  static const String strUnauthorizedError = "User unauthorized, try again later";
-  static const String strNotFoundError = "Url not found, try again later";
-  static const String strConflictError = "Conflict found, try again later";
-  static const String strInternalServerError = "Some thing went wrong, try again later";
-  static const String strUnknownError = "Some thing went wrong, try again later";
-  static const String strTimeoutError = "Time out, try again late";
-  static const String strDefaultError = "Some thing went wrong, try again later";
-  static const String strCacheError = "Cache error, try again later";
-  static const String strNoInternetError = "Please check your internet connection";
-  static const String strServerError = "Lost connection with server, try again later";
+  static  String noRouteFound = 'network.noRouteFound'.tr();
+  static  String success = "network.success".tr();
+  static  String strBadRequestError = 'network.strBadRequestError'.tr();
+  static  String strNoContent = 'network.strNoContent'.tr();
+  static  String strForbiddenError = 'network.strForbiddenError'.tr();
+  static  String strUnauthorizedError = 'network.strUnauthorizedError'.tr();
+  static  String strNotFoundError = 'network.strNotFoundError'.tr();
+  static  String strConflictError = 'network.strConflictError'.tr();
+  static  String strInternalServerError = 'network.strInternalServerError'.tr();
+  static  String strUnknownError = 'network.strUnknownError'.tr();
+  static  String strTimeoutError = 'network.strTimeoutError'.tr();
+  static  String strDefaultError = 'network.strDefaultError'.tr();
+  static  String strCacheError = 'network.strCacheError'.tr();
+  static  String strNoInternetError = 'network.strNoInternetError'.tr();
+  static  String strServerError = 'network.strServerError'.tr();
 }

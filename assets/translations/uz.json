@@ -6,7 +6,9 @@
     "connectMessage": "Internetga ulanish mavjud emas",
     "offline": "Oflayn rejim",
     "connect": "Ulanish",
-    "ready": "Tayyor"
+    "ready": "Tayyor",
+    "refresh": "Yangilash",
+    "search": "Shahar nomini kiriting"
   },
 
   "language": {
@@ -41,5 +43,31 @@
     "cancel": "Bekor qilish",
     "attention": "Diqqat!",
     "logOutMessage": "Haqiqatan ham chiqmoqchimisiz?"
+  },
+  "homeView": {
+    "today": "Bugun",
+    "like": "Kabi",
+    "min": "Min",
+    "max": "Maks",
+    "wind": "Shamol",
+    "humidity": "Namlik",
+    "pressure": "Bosim"
+  },
+  "network": {
+    "noRouteFound": "Marshrut topilmadi",
+    "success" : "Muvaffaqiyat",
+    "strBadRequestError" : "Noto'g'ri so'rov. keyinroq qayta urinib ko‘ring",
+    "strNoContent" : "Kontentsiz muvaffaqiyat",
+    "strForbiddenError" : "Taqiqlangan so'rov. keyinroq qayta urinib ko‘ring",
+    "strUnauthorizedError" :"Foydalanuvchi ruxsatsiz, keyinroq qayta urinib ko‘ring",
+    "strNotFoundError" :"Url topilmadi, keyinroq qayta urinib koʻring",
+    "strConflictError" : "Mojaro topildi, keyinroq qayta urinib koʻring",
+    "strInternalServerError" : "Nimadir xato ketdi, keyinroq qayta urining",
+    "strUnknownError" : "Nimadir xato ketdi, keyinroq qayta urining",
+    "strTimeoutError" :"Vaqt tugadi, kech qayta urinib ko'ring",
+    "strDefaultError" : "Nimadir xato ketdi, keyinroq qayta urining",
+    "strCacheError" : "Kesh xatosi, keyinroq qayta urinib ko‘ring",
+    "strNoInternetError" : "Internet ulanishingizni tekshiring",
+    "strServerError" : "Server bilan aloqa uzildi, keyinroq qayta urinib koʻring"
   }
 }

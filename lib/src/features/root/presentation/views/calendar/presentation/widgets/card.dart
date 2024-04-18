@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/core/extensions/decoration.dart';
 import 'package:weather_science/src/core/extensions/widget_ext.dart';
 import 'package:weather_science/src/core/widgets/common_text.dart';
+import '../../../../../../../core/consts/colors/app_colors.dart';
 import '../../../../../../../core/consts/icons/app_icons.dart';
 import '../../../../../../../core/utils/loader.dart';
 import '../../data/models/remote/month_temp/month_temp_model.dart';
@@ -63,6 +64,7 @@ class CardTemp extends StatelessWidget {
       fit: BoxFit.fill,
       placeholder: (context, url) => buttonLoader,
       errorWidget: (context, url, error) => CircleAvatar(
+        backgroundColor: AppColors.appBakColor,
         child: ClipOval(
           child: Image.asset(AppIcons.defaultIcon).paddingAll(16.sp),
         ),
