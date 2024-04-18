@@ -23,20 +23,22 @@ class ChooseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     _ctx = context;
     return AppButton(
-      width: 54.sp,
-      height: 28.sp,
+      width: double.infinity,
+      fillColor: AppColors.appBakColor,
+      height: 48.sp,
+      borderColor: AppColors.appBakColor,
       onPressed: _chooseLang,
-      fillColor: AppColors.buttonColor,
       elevation: 0,
-      borderRadius: 20.sp,
+      borderRadius: 8.sp,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(height: 22.sp, width: 22.sp, child: Image.asset(fl(context))),
-          SvgPicture.asset(AppIcons.logout).paddingOnly(r: 6.w),
+          CommText(text: 'language.title'.tr(),textAlign: TextAlign.center,fontSize: 14.sp),
+          const Icon(Icons.arrow_drop_down)
         ],
-      ).paddingOnly(l: 6.sp),
-    );
+      ).paddingSymmetric(horizontal: 12.sp)
+    ).paddingSymmetric(horizontal: 16.sp,vertical: 8.sp);
   }
 
   String fl(BuildContext context) {
@@ -50,12 +52,20 @@ class ChooseButton extends StatelessWidget {
   Future<void> _chooseLang() {
     return showCupertinoModalPopup(
       context: _ctx,
-      builder: (BuildContext context) => CupertinoActionSheet(
-        title: Text("Выберите язык", style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
-        message: ChooseMenu(),
-        cancelButton: CupertinoActionSheetAction(
-            onPressed: () { Navigator.pop(context); },
-            child: CommText(text: "Отмена",textColor: AppColors.red,fontSize: 14.sp,fontWeight: FontWeight.w700))
+      builder: (BuildContext context) => Theme(
+        data: ThemeData.dark(),
+        child: CupertinoActionSheet(
+            title: CommText(text: 'language.title'.tr(),textAlign: TextAlign.center,fontSize: 16.sp),
+            message: ChooseMenu(),
+            cancelButton: CupertinoActionSheetAction(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: CommText(
+                    text: 'keyword.ready'.tr(),
+                    textColor: AppColors.buttonColor,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w700))),
       ),
     );
   }

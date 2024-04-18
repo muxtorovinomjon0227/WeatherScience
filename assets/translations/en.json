@@ -5,7 +5,8 @@
     "ok": "OK",
     "connectMessage": "Internet connection is not available",
     "offline": "Offline mode",
-    "connect": "Connection"
+    "connect": "Connection",
+    "ready": "Ready"
   },
 
   "language": {

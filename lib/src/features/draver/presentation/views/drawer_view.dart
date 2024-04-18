@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_science/src/features/draver/presentation/widgets/user_info.dart';
+import '../../../language/presentation/widget/choos_button.dart';
 import '../widgets/menu_card.dart';
 import '../widgets/utils.dart';
 
@@ -24,6 +25,7 @@ class DrawerView extends StatelessWidget {
               title: ProfileUtils.menus[index].tr()),),
           ),
         ),
+        ChooseButton(),
       ],
     );
   }
