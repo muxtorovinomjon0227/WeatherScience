@@ -61,8 +61,6 @@ dependencies:
   # for HTTP networking
   dio: ^5.4.1
 
-  # for SVG icons
-  flutter_svg: ^2.0.9
 
   # for see log nice color
   logger: ^2.0.2+1

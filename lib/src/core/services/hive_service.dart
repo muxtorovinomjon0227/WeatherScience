@@ -67,4 +67,31 @@ class HiveService {
   static Future<void> removeVerifiedUser() async {
     await box.delete(BoxConst.verifiedUserKey);
   }
+
+  static Future<void> saveUserInfo(Map<String, dynamic> data) async {
+    await box.put(BoxConst.userInfoKey, data);
+  }
+  static Future<Map<String, dynamic>> getUserInfo() async {
+    var data = await box.get(BoxConst.userInfoKey);
+    return convertMap(data);
+  }
+  static Future<void> removeUserInfo() async {
+    await box.delete(BoxConst.userInfoKey);
+  }
+
+ static Map<String, dynamic> convertMap(Map<dynamic, dynamic> map) {
+    for (var key in map.keys) {
+      if (map[key] is Map) {
+        map[key] = convertMap(map[key]);
+      } else if (map[key] is List) {
+        map[key] = map[key].map((e) {
+          if (e is Map) {
+            return convertMap(e);
+          }
+          return e;
+        }).toList();
+      }
+    }
+    return Map<String, dynamic>.from(map);
+  }
 }

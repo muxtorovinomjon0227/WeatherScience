@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:weather_science/src/core/services/hive_service.dart';
 import 'package:weather_science/src/core/utils/app_utils.dart';
 import '../../../../core/http/error_handler.dart';
 import '../../../../core/http/failure.dart';
@@ -26,6 +27,7 @@ class AuthRepositoryImpl extends AuthRepository {
             email: userCredential.user?.email ?? "",
             userName: userCredential.user?.displayName ?? "",
             imageUrl: userCredential.user?.photoURL ?? "");
+        HiveService.saveUserInfo(AppUtils.user.toJson());
         return Right(AppUtils.user);
       } catch (error) {
         return Left(ErrorHandler.handle(error).failure);
@@ -44,6 +46,7 @@ class AuthRepositoryImpl extends AuthRepository {
             imageUrl: credential.user?.photoURL ?? "",
             email: credential.user?.email ?? "",
             userName: credential.user?.displayName ?? "");
+        HiveService.saveUserInfo(AppUtils.user.toJson());
         return Right(AppUtils.user);
       } on FirebaseAuthException catch (e) {
         return Left(Failure(-7,e.message ?? ""));
@@ -62,6 +65,7 @@ class AuthRepositoryImpl extends AuthRepository {
             imageUrl: credential.user?.photoURL ?? "",
             email: credential.user?.email ?? "",
             userName: credential.user?.displayName ?? "");
+        HiveService.saveUserInfo(AppUtils.user.toJson());
         return Right(AppUtils.user);
       } on FirebaseAuthException catch (e) {
         return Left(Failure(-7,e.message ?? ""));

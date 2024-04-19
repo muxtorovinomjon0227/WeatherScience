@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:weather_science/src/core/services/hive_service.dart';
 import '../consts/colors/app_colors.dart';
 import '../router/router.gr.dart';
 import '../widgets/common_text.dart';
@@ -114,9 +114,14 @@ Future<void> logOut(BuildContext context) {
               child: CommText(
                   text: 'drawer.logOut'.tr(), textColor: AppColors.red),
               onPressed: () async {
-                await FirebaseAuth.instance.signOut();
+                await Future.wait([
+                 FirebaseAuth.instance.signOut(),
+                  HiveService.removeVerifiedUser(),
+                  HiveService.removeUserInfo(),
+
+                ]);
                 if(context.mounted){
-                  context.router.push(const AuthView());
+                  context.router.push(SelectLangView());
                 }
               },
             ),

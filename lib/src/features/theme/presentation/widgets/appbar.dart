@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:weather_science/src/core/extensions/widget_ext.dart';
 import '../../../../core/consts/icons/app_icons.dart';
 import '../../../../core/widgets/common_text.dart';
@@ -12,7 +11,7 @@ AppBar chooseThemeAppBar(BuildContext context) {
       onTap: () {
         Navigator.pop(context);
       },
-      child: SvgPicture.asset(AppIcons.back).paddingOnly(l: 16.sp),
+      child: Image.asset(AppIcons.back).paddingOnly(l: 16.sp),
     ),
     centerTitle: true,
     title: CommText(
