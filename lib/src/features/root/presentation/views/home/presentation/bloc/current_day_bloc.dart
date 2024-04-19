@@ -30,8 +30,7 @@ class CurrentDayBloc extends Bloc<CurrentDayEvent, CurrentDayState> {
     await _currentDayDataUseCase.execute(event.q,event.units).then((value) => value.fold(
             (l) => emit(ExceptionState(message: l.message)),
             (r) {emit(FetchedDataState(currentDayModel: r));})).whenComplete(
-            () {
-              HiveService.saveVerifiedUser(true);
+            () {HiveService.saveVerifiedUser(true);
               event.context.router.push(HomeView());
             });
   }
