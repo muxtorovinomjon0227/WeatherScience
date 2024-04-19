@@ -6,7 +6,7 @@ Restaurant finder is ... .
   <img src="./media/selectLang.jpg" width="120" />
   <img src="./media/auth.jpg"  width="120" /> 
   <img src="./media/main.jpg" width="120" />
-  <img src="./media/auth.jpeg"  width="120" /> 
+  <img src="./media/auth.jpg"  width="120" /> 
   <img src="./media/calendar.jpg" width="120" />
   <img src="./media/drow.jpg" width="120" />
   <img src="./media/buttomShheet.jpg" width="120" />
