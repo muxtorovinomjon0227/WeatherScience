@@ -42,8 +42,8 @@ class SearchSheet extends StatelessWidget {
             itemBuilder: (ctx, index) {
               return ListTile(
                 onTap: (){
-                  _updateData(context,item[index].city ?? "");
                   Navigator.pop(context);
+                  _updateData(context,item[index].city ?? "");
                 },
                 title: CommText(text: item[index].city ?? ""),
               );

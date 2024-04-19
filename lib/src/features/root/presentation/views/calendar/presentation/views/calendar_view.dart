@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_science/src/core/utils/app_utils.dart';
-import 'package:weather_science/src/core/widgets/common_text.dart';
 import '../../../../../../../core/di/di.dart';
 import '../../../../../../../core/utils/dialogs.dart';
 import '../../../../../../../core/widgets/error/error.dart';
@@ -43,6 +42,6 @@ class CalendarView extends StatelessWidget {
 
   Future<void> _updateData() async {
     Loaders.showLoading(_ctx);
-    di<CalendarBloc>().add(FetchCalendarDataEvent(context: _ctx, q: AppUtils.cityName, units: AppUtils.units));
+    di<CalendarBloc>().add(FetchCalendarDataEvent(context: _ctx, q: 'Toshkent', units: AppUtils.units));
   }
 }

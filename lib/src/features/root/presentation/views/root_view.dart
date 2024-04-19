@@ -20,10 +20,8 @@ class RootView extends StatefulWidget {
 }
 
 class _RootViewState extends State<RootView> {
-  late BuildContext _ctx;
   @override
   Widget build(BuildContext context) {
-    _ctx = context;
     return AutoTabsRouter(
       routes: [
         HomeView(),
@@ -98,7 +96,6 @@ class _RootViewState extends State<RootView> {
       case 0:
         break;
       case 1:
-        //  di<CalendarBloc>().add(FetchCalendarDataEvent(context: _ctx, q: AppUtils.cityName, units: AppUtils.units));
         break;
       case 2:
         break;
