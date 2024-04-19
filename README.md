@@ -55,7 +55,7 @@ dart run icons_launcher:create
 
    - The application is designed to view one-day and 5-day weather information. 
    - Used free api from [openweathermap.org](https://openweathermap.org/) to get weather data.
-   - Used Firebase Google auth and Email and Password login for auth.
+   - Used [Firebase](https://firebase.google.com/) Google auth and Email and Password login for auth.
    - The test task was performed using the following libraries, patterns and technologies:
       * Flutter BLoC/Cubit
       * JsonSerializable/Freezed
