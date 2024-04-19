@@ -9,6 +9,9 @@ import 'package:weather_science/src/features/auth/data/models/remote/user/user_m
 import 'package:weather_science/src/features/root/presentation/views/home/presentation/bloc/current_day_bloc.dart';
 import '../../../root/presentation/views/calendar/presentation/bloc/calendar_bloc.dart';
 import '../../data/repositories/auth_repository_impl.dart';
+import '../../domain/usecase/signin_emailpass_usecase.dart';
+import '../../domain/usecase/signin_with_google_case.dart';
+import '../../domain/usecase/signup_emailpass_usecase.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
@@ -30,10 +33,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  final _authRepositoryImpl = AuthRepositoryImpl();
+  final _googleAuthUseCase = di<GoogleAuthUseCase>();
+  final _emailPassSignUpUseCase = di<EmailPassUseCase>();
+  final _emailPassSignInUseCase = di<EmailPassSignInUseCase>();
 
   Future<void> _loginWithGoogle(LoginWithGoogleEvent event, Emitter<AuthState> emit) async {
-   await _authRepositoryImpl.signInWithGoogle(context: event.context).then((value) =>
+   await _googleAuthUseCase.execute(event.context).then((value) =>
         value.fold((l) {
           popUp(event.context, error: l.message);
           ExceptionState(message: l.message);}, (r){
@@ -41,7 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: AppUtils.units, context: event.context));}));}
 
   Future<void> _logInEmailPass(LoginEmailPassEvent event, Emitter<AuthState> emit) async {
-   await _authRepositoryImpl.signInEmailPassword(context: event.context, email: event.email, password: event.pass).then(
+   await _emailPassSignInUseCase.execute(event.context,event.email,event.pass).then(
            (value) => value.fold((l){
              emit(NoRegisterState(isNoRegister: true));
              popUp(event.context, error: l.message);}, (r){
@@ -50,7 +55,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _signUpEmailPass(SignUpEmailPassEvent event, Emitter<AuthState> emit) async {
-   await _authRepositoryImpl.signUpEmailPassword(context: event.context, email: event.email, password: event.pass).then(
+   await _emailPassSignUpUseCase.execute(event.context,event.email,event.pass).then(
             (value) => value.fold((l){emit(NoRegisterState(isNoRegister: true));
           popUp(event.context, error: l.message);}, (r){
               di<CalendarBloc>().add(FetchCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));

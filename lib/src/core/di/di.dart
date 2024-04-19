@@ -1,5 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import '../../features/auth/data/repositories/auth_repository_impl.dart';
+import '../../features/auth/domain/repositories/auth_repository.dart';
+import '../../features/auth/domain/usecase/signin_emailpass_usecase.dart';
+import '../../features/auth/domain/usecase/signin_with_google_case.dart';
+import '../../features/auth/domain/usecase/signup_emailpass_usecase.dart';
 import '../../features/root/presentation/views/calendar/data/repositories/calendar_repository_impl.dart';
 import '../../features/root/presentation/views/home/data/repositories/home_repository_impl.dart';
 import '../enums/flavor.dart';
@@ -19,6 +24,15 @@ Future<void> configureDependencies(Flavor flavorMode,) async {
   di.registerLazySingleton<FlavorService>(() => FlavorService(flavor: flavorMode));
 
   di.registerLazySingleton(() => ApiService());
+
+  di.registerLazySingleton(() => AuthRepositoryImpl(di()));
+  di.registerFactory<AuthRepository>(() => AuthRepositoryImpl(di()));
+
   di.registerLazySingleton(() => HomeRepositoryImpl(di()));
   di.registerLazySingleton(() => CalendarRepositoryImpl(di()));
+
+  /// UseCase
+  di.registerFactory<GoogleAuthUseCase>(() => GoogleAuthUseCase(di()));
+  di.registerFactory<EmailPassUseCase>(() => EmailPassUseCase(di()));
+  di.registerFactory<EmailPassSignInUseCase>(() => EmailPassSignInUseCase(di()));
 }

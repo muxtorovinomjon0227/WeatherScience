@@ -49,4 +49,12 @@ Generate launcher screen
 ```sh
 dart run icons_launcher:create
 ```
-#   FindRest
+# WeatherScience
+
+
+
+# TZ WeatherScience application
+
+
+1. The application was made in the Dart programming language of the Flutter framework
+2. 
