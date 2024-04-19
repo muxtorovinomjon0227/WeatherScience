@@ -15,6 +15,10 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     on<FetchCalendarDataEvent>((event, emit) async {
       await _fetchData(event, emit);
     });
+
+    on<UpdateCalendarDataEvent>((event, emit) async {
+      await _update(event, emit);
+    });
   }
   final _fiveDaysDataUseCase = di<FiveDaysDataUseCase>();
 
@@ -23,5 +27,12 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     await _fiveDaysDataUseCase.execute(event.q,event.units).then((value) => value.fold(
             (l) => emit(ExceptionState(message: l.message)),
             (r) {emit(FetchedDataState(monthTempModel: r));})).whenComplete(() => Loaders.popDialog());
+  }
+
+  Future<void> _update(UpdateCalendarDataEvent event, Emitter<CalendarState> emit) async {
+        emit(CalendarInitialState());
+    await _fiveDaysDataUseCase.execute(event.q,event.units).then((value) => value.fold(
+            (l) => emit(ExceptionState(message: l.message)),
+            (r) {emit(FetchedDataState(monthTempModel: r));}));
   }
 }

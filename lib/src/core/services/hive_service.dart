@@ -39,7 +39,7 @@ class HiveService {
   }
   static Future<Map<String, dynamic>> getOneDayWeather() async {
     var data = await box.get(BoxConst.oneDayWeather);
-    return data;
+    return convertMap(data);
   }
   static Future<void> removeOneDayWeather() async {
     await box.delete(BoxConst.oneDayWeather);
@@ -47,14 +47,14 @@ class HiveService {
 
 
   static Future<void> saveFiveDaysWeather(Map<String, dynamic> data) async {
-    await box.put(BoxConst.oneDayWeather, data);
+    await box.put(BoxConst.fiveDaysDataKay, data);
   }
   static Future<Map<String, dynamic>> getFiveDaysWeather() async {
-    var data = await box.get(BoxConst.oneDayWeather);
-    return data;
+    var data = await box.get(BoxConst.fiveDaysDataKay);
+    return convertMap(data);
   }
   static Future<void> removeFiveDaysWeather() async {
-    await box.delete(BoxConst.oneDayWeather);
+    await box.delete(BoxConst.fiveDaysDataKay);
   }
 
   static Future<void> saveVerifiedUser(bool isVerifiedUser) async {

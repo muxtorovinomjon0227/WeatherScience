@@ -42,7 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         value.fold((l) {
           popUp(event.context, error: l.message);
           ExceptionState(message: l.message);}, (r){
-          di<CalendarBloc>().add(FetchCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));
+          di<CalendarBloc>().add(UpdateCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));
           di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: AppUtils.units, context: event.context));}));}
 
   Future<void> _logInEmailPass(LoginEmailPassEvent event, Emitter<AuthState> emit) async {
@@ -50,7 +50,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
            (value) => value.fold((l){
              emit(NoRegisterState(isNoRegister: true));
              popUp(event.context, error: l.message);}, (r){
-             di<CalendarBloc>().add(FetchCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));
+             di<CalendarBloc>().add(UpdateCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));
              di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: AppUtils.units, context: event.context));}));
   }
 
@@ -58,7 +58,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
    await _emailPassSignUpUseCase.execute(event.context,event.email,event.pass).then(
             (value) => value.fold((l){emit(NoRegisterState(isNoRegister: true));
           popUp(event.context, error: l.message);}, (r){
-              di<CalendarBloc>().add(FetchCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));
+              di<CalendarBloc>().add(UpdateCalendarDataEvent(context: event.context, q: AppUtils.cityName, units: AppUtils.units));
               di<CurrentDayBloc>().add(FetchDataEvent(q: AppUtils.cityName, units: AppUtils.units, context: event.context));}));
   }
 

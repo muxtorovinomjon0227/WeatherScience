@@ -11,3 +11,11 @@ class FetchCalendarDataEvent extends CalendarEvent {
   @override
   List<Object?> get props => [q,units,context];
 }
+class UpdateCalendarDataEvent extends CalendarEvent {
+  final String q;
+  final String units;
+  final BuildContext context;
+  UpdateCalendarDataEvent({required this.context, required this.q,required this.units});
+  @override
+  List<Object?> get props => [q,units,context];
+}

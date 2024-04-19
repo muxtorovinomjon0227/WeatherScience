@@ -64,7 +64,7 @@ class CardTemp extends StatelessWidget {
       fit: BoxFit.fill,
       placeholder: (context, url) => buttonLoader,
       errorWidget: (context, url, error) => CircleAvatar(
-        backgroundColor: AppColors.appBakColor,
+        backgroundColor: AppColors.cardColor,
         child: ClipOval(
           child: Image.asset(AppIcons.defaultIcon).paddingAll(16.sp),
         ),

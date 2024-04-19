@@ -26,7 +26,7 @@ class CalendarRepositoryImpl extends CalendarRepository {
         return Left(ErrorHandler.handle(error).failure);
       }
     } else {
-      Map<String, dynamic> data = await HiveService.getFiveDaysWeather();
+      final data = await HiveService.getFiveDaysWeather();
       return Right(MonthTempModel.fromJson(data));
     }
   }
