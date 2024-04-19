@@ -83,6 +83,9 @@ dependencies:
   # Images with cache
   cached_network_image: ^3.3.1
 
+  # for flutter_launcher_icons lib, generate command - flutter pub run flutter_launcher_icons
+  flutter_launcher_icons: ^0.13.1
+
 
 dev_dependencies:
   flutter_test:
@@ -130,18 +133,18 @@ flutter:
 # for flutter_native_splash lib, generate command - dart run flutter_native_splash:create
 flutter_native_splash:
 
-  color: "#2255EC"
-  image: assets/images/app_logo.png
-  color_dark: "#2255EC"
+  color: "#10284c"
+  image: assets/icons/background.png
+  color_dark: "#10284c"
 
   android_12:
-    image: assets/images/app_logo.png
+    image: assets/icons/background.png
 
     # Splash screen background color.
-    color: "#2255EC"
+    color: "#10284c"
 
     # App icon background color.
-    icon_background_color: "#2255EC"
+    icon_background_color: "#10284c"
 
 fullscreen: true
 
@@ -149,6 +152,6 @@ fullscreen: true
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icons/logo.png"
+  image_path: "assets/icons/appsplash.png"
   min_sdk_android: 21
 
