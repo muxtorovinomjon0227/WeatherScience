@@ -57,17 +57,17 @@ dart run icons_launcher:create
    - Used free api from [openweathermap.org](https://openweathermap.org/) to get weather data.
    - Used Firebase Google auth and Email and Password login for auth.
    - The test task was performed using the following libraries, patterns and technologies:
-            - Flutter BLoC/Cubit
-              - JsonSerializable/Freezed
-              - Clean Architecture
-              - Dio + DioInterceptor
-              - Route Generation
-              - Dividing the UI into widgets
-              - Data cache: hive/hive_flutter
-              - Select language: easy_localization
-              - Adaptation of widgets to the device:  flutter_screenutil
-              - For Auth with Firebase google_sign_in and firebase_auth
-              - Cache network image cached_network_image
-              - Injectable get_it
-              - UseCase
+      * Flutter BLoC/Cubit
+      * JsonSerializable/Freezed
+      * Clean Architecture
+      * Dio + DioInterceptor
+      * Route Generation
+      * Dividing the UI into widgets
+      * Data cache: hive/hive_flutter
+      * Select language: easy_localization
+      * Adaptation of widgets to the device:  flutter_screenutil
+      * For Auth with Firebase google_sign_in and firebase_auth
+      * Cache network image cached_network_image
+      * Injectable get_it
+      * UseCase
    - FirebaseCrashlytics was used to analyze the errors generated in the application
