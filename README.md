@@ -1,7 +1,5 @@
 # WeatherScience
 
-Restaurant finder is ... .
-
 <p float="center">
   <img src="./media/selectLang.jpg" width="120" />
   <img src="./media/auth.jpg"  width="120" /> 
